@@ -1,16 +1,11 @@
 from flask import Flask
-import sqlalchemy
-from sqlalchemy import create_engine, text
+import pandas as pd
 
 app = Flask(__name__)
 
-data_path = "/Users/chansoon/Downloads/Matching Logic - Sheet1.csv"
-
-# Establish a connection with SQL database
-with open(data_path, "r") as f:
-    conn = create_engine("postgresql+psycopg://postgres:1209@localhost:5432/postgres")
-    
-
 @app.route("/")
-def hello_world():
-    return "<p> Hello world! <p>"
+def home():
+    return f"<p> Hellow world </p>"
+
+if "__name__" == "__main__":
+    app.run(debug=True)
