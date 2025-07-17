@@ -1,0 +1,32 @@
+.button {
+    /* Button appearance*/
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: #5B9BED;
+    transform: scale(2);
+    margin: 100px 50px 10px 15px;
+
+    /* Text appearance */
+    color: white;
+    font-weight: bold;
+}
+
+.button:hover {
+    background: white;
+    border: 2px solid #5B9BED;
+
+    /* Change text color */
+    color: black;
+}
+
+.description {
+    position: relative;
+    top: 60px;
+    font-size: 18px;
+}
+
+.center {
+    position: relative;
+    top: 40px;
+}
