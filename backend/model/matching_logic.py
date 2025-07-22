@@ -1,12 +1,14 @@
-from response import *
-from keywords import *
+from .response import *
+from .keywords import *
 import pandas as pd
 import re
 
 data = "/Users/chansoon/Downloads/Matching Logic - Sheet1.csv"
 
 class Matches:
-    def __init__(self, data_path, student_status, dataset=None):
+    def __init__(self, student_status, data_path=None, dataset=None):
+        self.index = -1 # Start a negative because we immediately increment
+
         if not dataset:
             self.df = pd.read_csv(data_path)
             self.all_role_names = self.df["role_name"].tolist()
@@ -906,6 +908,82 @@ class Matches:
 
             if top_req_skill in responses:
                 self.all_role_scoreboard[role_name] += 3
+
+    def next_assessment(self, data: dict, eliminate_unqualified=False):
+        self.index += 1
+
+        assessment = [
+            match.assess_age,
+            match.assess_physical_ability,
+            match.assess_availability,
+            match.assess_working_pref,
+            match.leadership_pref,
+            match.assess_prior_first_experience, 
+            match.assess_knowledge_of_game, 
+            match.assess_requirements_general,
+            match.assess_requirements_general
+        ]
+
+        curr_assessment = assessment[self.index]
+        # Ineffective, currently reconstructs params every function call when not necessary
+        params = construct_params(match.dataset, data) 
+        curr_params = params[data["question_id"]]
+
+        curr_assessment(**curr_params)
+
+    def construct_params(self, dataset, data):
+        params = {
+            "age": {
+                "dataset": dataset,
+                "response": data["answer"],
+                "eliminate_unqualified": True
+            },
+            "physical ability": {
+                "dataset": dataset,
+                "response": PreferenceResponse(["answer"]),
+                "eliminate_unqualified": True
+            },
+            "availability": {
+                "dataset": dataset,
+                "response": AvailabilityResponse(["answer"]),
+                "eliminate_unqualified": True
+            },
+            "working preference": {
+                "dataset": dataset,
+                "response": MultiChoiceResponse(["answer"], {"NO_PREF", "BTS", "FRONT"}),
+                "eliminate_unqualified": True
+            },
+            "leadership preference": {
+                "dataset": dataset,
+                "response": PreferenceResponse(["answer"]),
+                "eliminate_unqualified": True
+            },
+            "prior first experience": {
+                "dataset": dataset,
+                "response": ["answer"]  # Boolean, probably True/False
+            },
+            "knowledge of game": {
+                "dataset": dataset,
+                "response": ["answer"],  # e.g. "LIMITED"
+                "eliminate_unqualified": True
+            },
+            "required skills": {
+                "dataset": dataset,
+                "requirement_field": "required_skills",
+                "keywords": REQ_SKILLS_KEYWORDS,
+                "responses": {["answer"]},  # assuming it's a string like "PROGRAMMING PROFICIENCY"
+                "eliminate_unqualified": True
+            },
+            "required experience": {
+                "dataset": dataset,
+                "requirement_field": "required_experience",
+                "keywords": REQ_EXPERIENCE_KEYWORDS,
+                "responses": {["answer"]},
+                "eliminate_unqualified": True
+            }
+        }
+
+        return params
 
     def get_remaining_roles_count(self) -> int:
         """

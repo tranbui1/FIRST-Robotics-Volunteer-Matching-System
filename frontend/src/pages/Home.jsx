@@ -11,7 +11,7 @@ function Home() {
         <div>
             <h1> FIRST Robotics Volunteer Page </h1>
             <div className="center">
-                <p className="description">
+                <p className="home-description">
                     Interested in volunteering but don't know where to start? <br />
                     Take our matching questionnaire to find out the most <br />
                     suitable roles for you! :)

@@ -11,7 +11,78 @@ html, body {
     overflow-x: hidden;
 }
 
-.flat {
+* {
     margin: 0;
     padding: 0;
+}
+
+.center {
+   text-align: center;
+}
+
+.button-container-2 {
+    display: flex;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    gap: 400px;
+    position: relative;
+    top: 240px;
+}
+
+.button-container-3 {
+    display: flex;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    gap: 250px;
+    position: relative;
+    top: 220px;
+}
+
+.question {
+    position: relative;
+    top: 140px;
+    font-family: 'Inter';
+    font-size: 55px;
+    font-weight: 500;
+}
+
+.description {
+    position: relative;
+    top: 152px;
+
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.button-select-3 {
+    width: 160px;
+}
+
+.navigation {
+    position: relative;
+    top: 500px;
+    display: grid;
+    gap: 10px;
+    width: 200px;
+    margin: auto;
+
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
+}
+
+.navigation-button {
+    padding-top: 10px;
+    transition: all 0.8s ease;
+}
+
+.navigation-button:hover {
+    text-decoration: underline;
+    font-size: 40px;
+    background-color: orange; 
 }

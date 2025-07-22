@@ -2,6 +2,7 @@ from matching_logic import Matches, PreferenceResponse, AvailabilityResponse
 from test_data import TestData
 import pandas as pd
 import random
+import unittest
 
 class MatchTestUtils:
     def __init__(self, data: list[dicts] = None, data_path: str = None):
@@ -20,11 +21,10 @@ class MatchTestUtils:
             self.data = random.choice([TestData.short_test_data, 
                                        TestData.medium_test_data])
 
-        self.match_system = Matches(self.data)
+        self.match_system = Matches(dataset=self.data, student_status=True)
 
     def test_create_dataset(self):
-        # Ensure that the formatting is correct, etc.
-        return
+        # Short test
 
     # ..... lol i'll write later
 
