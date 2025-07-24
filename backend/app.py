@@ -20,7 +20,7 @@ except Exception as e:
     print(f"Failed to intialize the matching system and questions system: {e}")
     match, questions = None, None
 
-@app.route("/api/next-question", methods=["GET"])
+@app.route("/api/get-question", methods=["GET"])
 def get_question():
     """
     Sends the payload of the requested question.

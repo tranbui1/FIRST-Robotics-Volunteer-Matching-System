@@ -1,24 +1,34 @@
-* {
-    box-sizing: border-box;
+h1 {
+    font-size: 2em;        
+    font-weight: bold;    
+    margin: 0.67em 0; 
 }
 
 .button {
-    /* Button appearance*/
-    border: 2px solid transparent;
-    padding: 10px 20px;
-    border-radius: 30px;
+    border: 2px solid transparent;     
+    padding: 12px 20px;               
+    border-radius: 100px;
     background-color: #5B9BED;
-    transform: scale(2);
-    margin: 100px 50px 10px 15px;
+    transform: scale(1.1);             
+    margin: 5% 0;
     text-align: center;
     transition: all 0.5s ease;
-
-    /* Text appearance */
+    
     color: white;
     font-weight: bold;
 }
 
+@media (min-width: 768px) {
+    .button {
+        transform: scale(1.7);
+    }
+}
+
 .button:hover {
+    /* Option 1: lighter hover color */
+    /* background-color: #7fb4f8; */
+
+    /* Option 2: white background with blue border */
     background: white;
     border-color: #5B9BED;
 
@@ -27,13 +37,12 @@
 }
 
 .home-description {
-    position: relative;
-    top: 60px;
-    font-size: 18px;
+    position: center;
+    font-size: 100%;
 }
 
 .center {
     position: relative;
-    top: 40px;
+    top: 40vh;
 }
 
