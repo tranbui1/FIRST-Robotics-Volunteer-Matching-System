@@ -25,9 +25,6 @@ h1 {
 }
 
 .button:hover {
-    /* Option 1: lighter hover color */
-    /* background-color: #7fb4f8; */
-
     /* Option 2: white background with blue border */
     background: white;
     border-color: #5B9BED;

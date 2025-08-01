@@ -31,7 +31,7 @@ def get_question():
 
         question_id = int(request.args.get("question_id"))
 
-        if question_id > TOTAL_ID - 2:
+        if question_id > TOTAL_ID:
             return jsonify({"error" : "Question and question IDs don't exist"}), 404
 
         question = questions.get_question(question_id)
