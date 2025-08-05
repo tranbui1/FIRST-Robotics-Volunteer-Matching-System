@@ -2,6 +2,7 @@ questions = {
     "age": {
         "question": "What is your age?",
         "type": "number-age",
+        "prompt" : "Select your age",
         "id": 0
     },
     "physical_ability": {
